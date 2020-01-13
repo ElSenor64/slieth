@@ -5,6 +5,19 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 import sys
 
+class InstSelect():
+    # str bName
+    # str label
+    # method
+    def __init__(self, bName, label, method):
+        bName = Gtk.Button.new()
+        bName.set_label(label)
+        bName.connect("clicked", method)
+
+    def neofetch(self, button):
+        print("Installing Neofetch via Aptitude")
+        system("pkexec apt-get --yes install neofetch && exit")
+
 class HomeWindow(Gtk.ApplicationWindow):
     def __init__(self):
         Gtk.Window.__init__(self, title="Sleith Init Installs")
@@ -39,9 +52,11 @@ class HomeWindow(Gtk.ApplicationWindow):
         gridDEs = Gtk.Grid.new()
         # Buttons
             # Basics
-        bNeofetch = Gtk.Button.new()
-        bNeofetch.set_label("Neofetch")
-        bNeofetch.connect("clicked", self.neofetch)
+        InstSelect("bNeofetch", "Neofetch", "neofetch")
+        # bNeofetch = InstSelect(bNeofetch, "Neofetch", self.neofetch)
+        # bNeofetch = Gtk.Button.new()
+        # bNeofetch.set_label("Neofetch")
+        # bNeofetch.connect("clicked", self.neofetch)
         bRedShift = Gtk.Button.new()
         bRedShift.set_label("Red Shift")
         bRedShift.connect("clicked", self.redshift)
