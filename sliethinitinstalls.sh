@@ -1,13 +1,16 @@
 #Init
 sudo apt-get install figlet gdebi
+sudo wget https://launcher.mojang.com/download/Minecraft.deb
+sudo wget https://https://steamcdn-a.akamaihd.net/client/installer/steam.deb
 figlet Slieth Init Installer
 echo "Hit the ground running."
 # Basics
 figlet Basics
 sudo apt install neofetch sl gedit wine-stable synapse tilix terminator keepassxc gnome-tweaks
-sudo apt install chromium-*
+sudo apt-get install chromium-browser chromium-chromedriver chromium-bsu chromium-codecs-ffmpeg chromium-ublock-origin
+sudo apt-get install libreoffice-style-sifr libreoffice-java-common libreoffice-pdfimport libreoffice-systray
 sudo snap install midori
-sudo gdebi debs/googlechromestable.deb
+#sudo gdebi debs/googlechromestable.deb
 
 #Themes
 figlet Themes
@@ -24,8 +27,8 @@ sudo snap install eclipse  --classic
 #Games
 figlet Games
 sudo apt-get install gnome-games* gnome-breakout supertuxkart
-sudo gdebi debs/steam.deb
-sudo gdebi debs/minecraft.deb
+sudo gdebi steam.deb
+sudo gdebi Minecraft.deb
 
 #Desktop Environments
 figlet Desktop Environments
@@ -66,12 +69,12 @@ then
 fi
 
 figlet Done
-read -n 1 -p "To use all of the things you installed, it is a good idea to reboot your computer. Do so now? (Y/n):" rebot
-rebot=${rebot:-y}
-if [ $rebot = y ]
-then
-	reboot
-fi
+#read -n 1 -p "To use all of the things you installed, it is a good idea to reboot your computer. Do so now? (Y/n):" rebot
+#rebot=${rebot:-y}
+#if [ $rebot = y ]
+#then
+#	reboot
+#fi
 exit
 
 
