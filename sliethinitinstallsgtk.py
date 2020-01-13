@@ -7,7 +7,7 @@ import sys
 
 class HomeWindow(Gtk.ApplicationWindow):
     def __init__(self):
-        Gtk.Window.__init__(self, title="Sleith")
+        Gtk.Window.__init__(self, title="Sleith Init Installs")
         self.set_border_width(10)
 
         # sudolock = Gtk.LockButton.new(write)
@@ -119,9 +119,9 @@ class HomeWindow(Gtk.ApplicationWindow):
         tabs = Gtk.Notebook()
         tabs.insert_page(gridBasics, labelBasics, 0)
         tabs.insert_page(gridBrowsers, labelBrowsers, -1)
-        tabs.insert_page(gridThemes, labelThemes, -1)
-        tabs.insert_page(gridDevTools, labelDevTools, -1)
         tabs.insert_page(gridGames, labelGames, -1)
+        tabs.insert_page(gridDevTools, labelDevTools, -1)
+        tabs.insert_page(gridThemes, labelThemes, -1)
         tabs.insert_page(gridDEs, labelDEs, -1)
 
         # Basics
