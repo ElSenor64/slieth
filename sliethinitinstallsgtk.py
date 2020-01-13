@@ -81,6 +81,19 @@ class HomeWindow(Gtk.ApplicationWindow):
         bFaenza = Gtk.Button.new()
         bFaenza.set_label("Faenza")
         bFaenza.connect("clicked", self.faenza)
+            # Dev Tools
+        bGit = Gtk.Button.new()
+        bGit.set_label("Git SCM")
+        bGit.connect("clicked", self.git)
+        bCode = Gtk.Button.new()
+        bCode.set_label("VS Code")
+        bCode.connect("clicked", self.code)
+        bAtom = Gtk.Button.new()
+        bAtom.set_label("Atom")
+        bAtom.connect("clicked", self.atom)
+        bEclipse = Gtk.Button.new()
+        bEclipse.set_label("Eclipse")
+        bEclipse.connect("clicked", self.eclipse)
         # b*.set_border_width(3)
 
     # Tabs
@@ -112,6 +125,12 @@ class HomeWindow(Gtk.ApplicationWindow):
         gridThemes.attach(bPapirus, 0, 0, 2, 1)
         gridThemes.attach_next_to(bPocillo, bPapirus, right, 2, 1)
         gridThemes.attach_next_to(bFaenza, bPocillo, right, 2, 1)
+
+        # Dev Tools
+        gridDevTools.attach(bGit, 0, 0, 2, 1)
+        gridDevTools.attach_next_to(bCode, bGit, right, 2, 1)
+        gridDevTools.attach_next_to(bAtom, bCode, right, 2, 1)
+        gridDevTools.attach_next_to(bEclipse, bAtom, right, 2, 1)
 
         # self.add(sudolock)
         self.add(tabs)
@@ -176,6 +195,23 @@ class HomeWindow(Gtk.ApplicationWindow):
     def faenza(self, button):
         print("Installing Faenza Icon Theme via Aptitude")
         system("pkexec apt-get --yes install faenza-icon-theme && exit")
+
+        # Dev Tools
+    def git(self, button):
+        print("Installing Git Source Control Management via Aptitude")
+        system("pkexec apt-get --yes install git && exit")
+
+    def code(self, button):
+        print("Installing VS Code IDE via snapd")
+        system("pkexec snap install code --classic && exit")
+
+    def atom(self, button):
+        print("Installing Atom IDE via snapd")
+        system("pkexec snap install atom --classic && exit")
+
+    def eclipse(self, button):
+        print("Installing Eclipse IDE via snapd")
+        system("pkexec snap install eclipse --classic && exit")
 
 
 initwin = HomeWindow()
