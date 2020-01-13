@@ -23,6 +23,7 @@ class HomeWindow(Gtk.ApplicationWindow):
         labelBasics = Gtk.Label.new("Basics") # Tabs labels
         labelThemes = Gtk.Label.new("Themes")
         labelBrowsers = Gtk.Label.new("Browsers")
+        labelOffice = Gtk.Label.new("Office")
         labelDevTools = Gtk.Label.new("Programming")
         labelGames = Gtk.Label.new("Games")
         labelDEs = Gtk.Label.new("Desktop Environments")
@@ -31,6 +32,7 @@ class HomeWindow(Gtk.ApplicationWindow):
         # Grids
         gridBasics = Gtk.Grid.new()
         gridBrowsers = Gtk.Grid.new()
+        gridOffice = Gtk.Grid.new()
         gridThemes = Gtk.Grid.new()
         gridDevTools  = Gtk.Grid.new()
         gridGames = Gtk.Grid.new()
@@ -71,6 +73,13 @@ class HomeWindow(Gtk.ApplicationWindow):
         bMidori = Gtk.Button.new()
         bMidori.set_label("Midori")
         bMidori.connect("clicked", self.midori)
+            # Office
+        bLibreoffice = Gtk.Button.new()
+        bLibreoffice.set_label("Libreoffice Suite")
+        bLibreoffice.connect("clicked", self.libreoffice)
+        bLibreofficeExt = Gtk.Button.new()
+        bLibreofficeExt.set_label("Libreoffice Extra")
+        bLibreofficeExt.connect("clicked", self.libreofficeext)
             # Themes
         bPapirus = Gtk.Button.new()
         bPapirus.set_label("Papirus")
@@ -96,7 +105,7 @@ class HomeWindow(Gtk.ApplicationWindow):
         bEclipse.connect("clicked", self.eclipse)
             #Games
         bGGames = Gtk.Button.new()
-        bGGames.set_label("Gnome Games Suit")
+        bGGames.set_label("Gnome Games Suite")
         bGGames.connect("clicked", self.ggames)
         bSteam = Gtk.Button.new()
         bSteam.set_label("Steam")
@@ -113,12 +122,16 @@ class HomeWindow(Gtk.ApplicationWindow):
         bGGamesapp = Gtk.Button.new()
         bGGamesapp.set_label("Gnome Games App")
         bGGamesapp.connect("clicked", self.ggamesapp)
+        bP3xonenote = Gtk.Button.new()
+        bP3xonenote.set_label("P3X OneNote")
+        bP3xonenote.connect("clicked", self.p3xonenote)
         # b*.set_border_width(3)
 
     # Tabs
         tabs = Gtk.Notebook()
         tabs.insert_page(gridBasics, labelBasics, 0)
         tabs.insert_page(gridBrowsers, labelBrowsers, -1)
+        tabs.insert_page(gridOffice, labelOffice, -1)
         tabs.insert_page(gridGames, labelGames, -1)
         tabs.insert_page(gridDevTools, labelDevTools, -1)
         tabs.insert_page(gridThemes, labelThemes, -1)
@@ -139,6 +152,12 @@ class HomeWindow(Gtk.ApplicationWindow):
         gridBrowsers.attach_next_to(bChromiumAPT, bChromium, right, 2, 1)
         gridBrowsers.attach_next_to(bFirefox, bChromiumAPT, right, 2, 1)
         gridBrowsers.attach_next_to(bMidori, bFirefox, right, 2, 1)
+
+        # Office
+        gridOffice.attach(bLibreoffice, 0, 0, 2, 1)
+        gridOffice.attach_next_to(bLibreofficeExt, bLibreoffice, right, 2, 1)
+        gridOffice.attach_next_to(bP3xonenote, bLibreofficeExt, right, 2, 1)
+
 
         # Themes
         gridThemes.attach(bPapirus, 0, 0, 2, 1)
@@ -243,7 +262,7 @@ class HomeWindow(Gtk.ApplicationWindow):
 
         # Games
     def ggames(self, button):
-        print("Installing the Gnome Games Suit via Aptitude")
+        print("Installing the Gnome Games Suite via Aptitude")
         system("pkexec apt-get --yes install gnome-games && exit")
 
     def steam(self, button):
@@ -266,6 +285,17 @@ class HomeWindow(Gtk.ApplicationWindow):
         print("Installing the Gnome Games App via Aptitude")
         system("pkexec apt-get --yes install gnome-games-app && exit")
 
+    def libreoffice(self, button):
+        print("Installing full LibreOffice suite via Aptitude")
+        system("pkexec apt-get --yes install libreoffice-common libreoffice-writer libreoffice-impress libreoffice-base libreoffice-calc libreoffice-math libreoffice-draw && exit")
+
+    def libreofficeext(self, button):
+        print("Installing LibreOffice suite accessories via Aptitude")
+        system("pkexec apt-get --yes install libreoffice-style-sifr libreoffice-java-common libreoffice-pdfimport libreoffice-systray && exit")
+
+    def p3xonenote(self, button):
+        print("Installing P3X-Onenote")
+        system("pkexec snap install p3x-onenote && exit")
 
 
 initwin = HomeWindow()
