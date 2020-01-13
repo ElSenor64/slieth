@@ -94,6 +94,25 @@ class HomeWindow(Gtk.ApplicationWindow):
         bEclipse = Gtk.Button.new()
         bEclipse.set_label("Eclipse")
         bEclipse.connect("clicked", self.eclipse)
+            #Games
+        bGGames = Gtk.Button.new()
+        bGGames.set_label("Gnome Games Suit")
+        bGGames.connect("clicked", self.ggames)
+        bSteam = Gtk.Button.new()
+        bSteam.set_label("Steam")
+        bSteam.connect("clicked", self.steam)
+        bMinecraft = Gtk.Button.new()
+        bMinecraft.set_label("Minecraft")
+        bMinecraft.connect("clicked", self.minecraft)
+        bSupertuxkart = Gtk.Button.new()
+        bSupertuxkart.set_label("Super Tux Kart")
+        bSupertuxkart.connect("clicked", self.supertuxkart)
+        bGBreakout = Gtk.Button.new()
+        bGBreakout.set_label("Gnome Breakout")
+        bGBreakout.connect("clicked", self.gnomebreakout)
+        bGGamesapp = Gtk.Button.new()
+        bGGamesapp.set_label("Gnome Games App")
+        bGGamesapp.connect("clicked", self.ggamesapp)
         # b*.set_border_width(3)
 
     # Tabs
@@ -131,6 +150,15 @@ class HomeWindow(Gtk.ApplicationWindow):
         gridDevTools.attach_next_to(bCode, bGit, right, 2, 1)
         gridDevTools.attach_next_to(bAtom, bCode, right, 2, 1)
         gridDevTools.attach_next_to(bEclipse, bAtom, right, 2, 1)
+
+        # Games
+        gridGames.attach(bGGames, 0, 0, 2, 1)
+        gridGames.attach_next_to(bSteam, bGGames, right, 2, 1)
+        gridGames.attach_next_to(bMinecraft, bSteam, right, 2, 1)
+        gridGames.attach_next_to(bSupertuxkart, bMinecraft, right, 2, 1)
+        gridGames.attach_next_to(bGBreakout, bSupertuxkart, right, 2, 1)
+        gridGames.attach_next_to(bGGamesapp, bGBreakout, right, 2, 1)
+
 
         # self.add(sudolock)
         self.add(tabs)
@@ -212,6 +240,32 @@ class HomeWindow(Gtk.ApplicationWindow):
     def eclipse(self, button):
         print("Installing Eclipse IDE via snapd")
         system("pkexec snap install eclipse --classic && exit")
+
+        # Games
+    def ggames(self, button):
+        print("Installing the Gnome Games Suit via Aptitude")
+        system("pkexec apt-get --yes install gnome-games && exit")
+
+    def steam(self, button):
+        print("Installing Steam via wget and gdebi")
+        system("wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb && pkexec gdebi steam.deb && exit")
+
+    def minecraft(self, button):
+        print("Installing Minecraft via wget and gdebi")
+        system("wget https://launcher.mojang.com/download/Minecraft.deb && pkexec gdebi Minecraft.deb && exit")
+
+    def supertuxkart(self, button):
+        print("Installing SuperTuxKart via snapd")
+        system("pkexec snap install supertuxkart && exit")
+
+    def gnomebreakout(self, button):
+        print("Installing Gnome Breakout via Aptitude")
+        system("pkexec apt-get --yes install gnome-breakout && exit")
+    
+    def ggamesapp(self, button):
+        print("Installing the Gnome Games App via Aptitude")
+        system("pkexec apt-get --yes install gnome-games-app && exit")
+
 
 
 initwin = HomeWindow()
