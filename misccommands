@@ -1,0 +1,22 @@
+VLC Library Install
+sudo apt-get install libdvd-pkg
+sudo dpkg-reconfigure libdvd-pkg
+
+Gameport Joysticks
+https://ubuntuforums.org/showthread.php?t=330607
+https://www.youtube.com/watch?v=UP4h7EZaqSs
+
+PAVU Loopback Enableation
+pactl load-module module-loopback
+
+NumLock Key
+xmodmap -e 'add mod3 = Scroll_Lock'
+
+StarWars
+telnet towel.blinkenlights.nl
+cowsay -f stegosaurus "I am a stegosaurus!"
+
+VSCode Dependancies:
+	Online navx-xmp URL: https://www.kauailabs.com/dist/frc/2020/navx_frc.json
+	CTRE Pheonix Package: cp -r ./vendordeps ~/frc2019
+
