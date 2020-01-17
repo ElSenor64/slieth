@@ -6,6 +6,16 @@ Gameport Joysticks
 https://ubuntuforums.org/showthread.php?t=330607
 https://www.youtube.com/watch?v=UP4h7EZaqSs
 
+Boot Repair
+sudo add-apt-repository ppa:yannubuntu/boot-repair
+sudo apt-get update
+sudo apt-get install -y boot-repair && boot-repair
+
+Grub Customizer
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+sudo apt-get update
+sudo apt-get install grub-customizer
+
 PAVU Loopback Enableation
 pactl load-module module-loopback
 
